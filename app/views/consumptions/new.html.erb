@@ -1,0 +1,8 @@
+<%= form_for(@consumption) do |f| %>
+		<%= f.text_field :kilometers, placeholder:  "Combien de kilomètre depuis le dernier plein?" %>
+		<%= f.text_field :liter_price, placeholder: "Prix au litre" %>
+		<%= f.text_field :total_price, placeholder: "Prix du plein" %>
+		<%= f.text_field :shop , placeholder: "Enseigne pompe à essence" %>
+		<%= f.submit %>
+<% end %>
+  

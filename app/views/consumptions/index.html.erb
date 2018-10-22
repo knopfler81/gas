@@ -1,0 +1,36 @@
+<div class="container">
+	<h1>Mes dernières consomations</h1>
+
+		<table>
+
+		<tr>
+			<td>Date</td>
+			<td>Km</td>
+			<td>€/l</td>
+			<td>Total</td>
+			<td>Magasin</td>
+		</tr>
+			<% @consumptions.each do |c| %>
+					
+				<tr>
+					<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
+					<td><%= c.kilometers %></td>
+					<td><%= c.liter_price %></td>
+					<td><%= c.total_price %></td>
+					<td><%= c.shop %></td>
+				</tr>
+
+			<% end %>
+		</table>
+
+
+	<p>Nombre de pleins: <%= @consumptions.count %></p>
+	<p>Montant total des consomations: <%= @consumptions.total %></p>
+
+	<style>
+		td {
+			padding: 5px;
+			width: 200px;
+		}
+	</style>
+</div>
