@@ -1,0 +1,19 @@
+<%= simple_form_for(@consumption) do |f| %>
+		<div class="row">
+			<div class="col-4">
+				<%= f.input :kilometers, placeholder:  "Combien de kilomètre depuis le dernier plein?" %>
+			</div>
+			<div class="col-4">
+				<%= f.input :liter_price, placeholder: "Prix au litre" %>	
+			</div>
+			<div class="col-4">
+				<%= f.input :total_price, placeholder: "Prix du plein" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<%= f.input :shop , placeholder: "Enseigne pompe à essence" %>
+			</div>
+		</div>
+		<%= f.submit class: 'btn btn-primary' %>
+<% end %>  
