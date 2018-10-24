@@ -1,0 +1,10 @@
+first:
+  kilometers: 789
+  liter_price: 1.59
+  total_price: 67
+  shop: Super U
+second:
+  kilometers: 502
+  liter_price: 1.66
+  total_price: 71
+  shop: Total
