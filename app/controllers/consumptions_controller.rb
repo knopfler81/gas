@@ -1,6 +1,9 @@
 class ConsumptionsController < ApplicationController
+	before_action :find_consumption, only: [:edit, :destroy, :update]
+
 	def index
-		@consumptions = Consumption.order(created_at: :desc)
+		@search = ConsumptionSearch.new(params[:search])
+		@consumptions = @search.date_range
 	end
 
 	def new 
@@ -9,15 +12,25 @@ class ConsumptionsController < ApplicationController
 
 	def create
 		@consumption = Consumption.new(consumption_params)
-	  respond_to do |format|
-	    if @consumption.save
-	      format.html { redirect_to consumptions_path, notice: 'consumption was successfully created.' }
-	      format.json { render :index, status: :created, location: @consumptions }
-	    else
-	      format.html { render :new }
-	      format.json { render json: @consumption.errors, status: :unprocessable_entity }
-	    end
-	  end
+    if @consumption.save
+     	redirect_to consumptions_path, notice: 'consumption was successfully created.'
+    else
+      render :new
+    end
+	end
+
+	def edit
+	end
+
+	def update
+		if @consumption.update(consumption_params)
+		 redirect_to consumptions_path, notice: 'consumption was successfully created.'
+		end		
+	end
+
+	def destroy
+		redirect_to consumptions_path if @consumption.destroy!
+
 	end
 
 	def show
@@ -26,7 +39,15 @@ class ConsumptionsController < ApplicationController
 
 	private
 
+		def find_consumption
+			@consumption = Consumption.find(params[:id])
+		end
+
 		def consumption_params
 			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price)
+		end
+
+		def selected_month(desired_month)
+			Consumption.where('extract(month from created_at) = ?', desired_month)
 		end
 end

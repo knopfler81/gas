@@ -1,5 +1,11 @@
 {
   "name": "gas",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "flatpickr": "^4.5.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }
