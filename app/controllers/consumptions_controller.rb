@@ -1,5 +1,6 @@
 class ConsumptionsController < ApplicationController
 	before_action :find_consumption, only: [:edit, :destroy, :update]
+	before_action :authenticate_user!
 
 	def index
 		@search = ConsumptionSearch.new(params[:search])
@@ -12,6 +13,7 @@ class ConsumptionsController < ApplicationController
 
 	def create
 		@consumption = Consumption.new(consumption_params)
+		@consumption.user = current_user
     if @consumption.save
      	redirect_to consumptions_path, notice: 'consumption was successfully created.'
     else
@@ -43,8 +45,12 @@ class ConsumptionsController < ApplicationController
 			@consumption = Consumption.find(params[:id])
 		end
 
+		def find_user
+			@user = User.find(params[:user_id])
+		end
+
 		def consumption_params
-			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price)
+			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price, :user_id)
 		end
 
 		def selected_month(desired_month)

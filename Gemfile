@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem 'webpacker'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
+gem 'devise'
+gem 'font-awesome-sass', '~> 5.0.9'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 3.7'

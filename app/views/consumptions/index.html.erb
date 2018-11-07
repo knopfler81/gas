@@ -3,6 +3,8 @@
 	<div class="row">
 		<div class="col-12">
 			<h1>Mes consommations d'essence:</h1>
+			<%= current_user.email %>
+			<%= link_to "Déconnexion", destroy_user_session_path(current_user), method: :delete, data: {confirm: "Sure??"}  %>
 			<hr>
 		</div>
 	</div>
@@ -18,34 +20,50 @@
 			<div class="col-offset-1 col-3">
 				<%= submit_tag "Rechercher", class: "btn btn-primary" %>
 			</div>	  
-			<% end %>
+		<% end %>
 		</div>
-		<hr>
-
+		<br>
 		<div class="row">
 			<div class="col-12">
-				<table>
-					<tr>
-						<td>Date</td>
-						<td>Magasin</td>
-						<td>€/l</td>
-						<td>Km</td>
-						<td>€ Total</td>
-					</tr>
+				<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th scope="col">Date</th>
+				      <th scope="col">Magasin</th>
+				      <th scope="col">€/l</th>
+				      <th scope="col">Km</th>
+							<th scope="col">€ Total</<th></th>
+				    </tr>
+				  </thead>
+				  	<tbody>
+				  		<% @consumptions.each do |c| %>
 
-					<% @consumptions.each do |c| %>
-							
-						<tr>
-							<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
-							<td><%= c.shop %></td>
-							<td><%= c.liter_price %></td>
-							<td><%= c.kilometers %></td>
-							<td><%= c.total_price %></td>
-							<td><%= link_to 'edit', edit_consumption_path(c)  %></td>
-							<td><%= link_to 'destroy', consumption_path(c), method: :delete, data: {confirm: 'are you sure?'} %></td>
-						</tr>
-						
-					<% end %>
+				  		<% if c.user_id == current_user.id %>
+				  			
+				  		<tr>
+				  			<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
+				  			<td><%= c.shop %></td>
+				  			<td><%= c.liter_price %></td>
+				  			<td><%= c.kilometers %></td>
+				  			<td><%= c.total_price %></td>
+				  			<td class= "actions">
+				  				<%= link_to edit_consumption_path(c) do %>
+				  					<i class="fas fa-edit"></i>
+				  				<% end %>
+				  			</td>
+				  			<td class= "actions">
+				  				<%= link_to  consumption_path(c), method: :delete, data: {confirm: 'are you sure?'}  do %>		  				
+										<i class="fas fa-trash-alt"></i>
+									<% end %>
+				  			</td>
+
+				  		</tr>
+				  		<% end %>
+				  		<% end %>
+
+				  	</tbody>
+				  	
+			
 				</table>
 			</div>
 
@@ -65,10 +83,3 @@
 			</div>
 		</div>
 </div>
-
-<style>
-	td {
-		padding: 5px;
-		width: 200px;
-	}
-</style>
