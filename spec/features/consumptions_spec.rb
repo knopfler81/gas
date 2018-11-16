@@ -1,8 +1,12 @@
 require 'rails_helper'
 
-
 RSpec.describe Consumption do
-	fixtures :consumptions
+	fixtures :consumptions, :users
+
+
+	before(:each) do 
+		login_as :nelly
+	end
 
 	scenario "list all consumptions" do
 		visit consumptions_path
@@ -24,9 +28,41 @@ RSpec.describe Consumption do
 	scenario "display the summary" do
 		consumptions(:first)
 		consumptions(:second)
+		consumptions(:third)
 
 		visit consumptions_path
-		expect(page).to have_content("Nombre de pleins: 2")
+		expect(page).to have_content("Remplissages utilisés : 2")
+	end
+
+
+	scenario "display the number of kilometers done" do 
+		consumptions(:first)
+		consumptions(:second)
+		consumptions(:third)
+
+		visit consumptions_path
+		expect(page).to have_content("Nombre de kilomètres parcourus : 1450.0")
+	end
+
+
+	scenario "display the number of kilometers between two fillin" do 
+		consumptions(:first)
+		consumptions(:second)
+		consumptions(:third)
+
+		visit consumptions_path
+		expect(page).to have_content(800)
+		expect(page).to have_content(650)
+	end
+
+	scenario "display the averrage price per km" do 
+		consumptions(:first)
+		consumptions(:second)
+		consumptions(:third)
+
+		visit consumptions_path
+		save_and_open_page
+		expect(page).to have_content("Moyenne du prix au km : 0.095 €")
 	end
 
 end
