@@ -35,5 +35,4 @@ module ConsumptionsHelper
 		end
 		res.sum
 	end
-
 end

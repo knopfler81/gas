@@ -34,7 +34,6 @@ RSpec.describe Consumption do
 		expect(page).to have_content("Remplissages utilisés : 2")
 	end
 
-
 	scenario "display the number of kilometers done" do 
 		consumptions(:first)
 		consumptions(:second)
@@ -43,7 +42,6 @@ RSpec.describe Consumption do
 		visit consumptions_path
 		expect(page).to have_content("Nombre de kilomètres parcourus : 1450.0")
 	end
-
 
 	scenario "display the number of kilometers between two fillin" do 
 		consumptions(:first)
@@ -61,7 +59,6 @@ RSpec.describe Consumption do
 		consumptions(:third)
 
 		visit consumptions_path
-		save_and_open_page
 		expect(page).to have_content("Moyenne du prix au km : 0.095 €")
 	end
 
