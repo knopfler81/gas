@@ -5,6 +5,7 @@ class ConsumptionsController < ApplicationController
 	def index
 		@search = ConsumptionSearch.new(params[:search])
 		@consumptions = @search.date_range
+		@consumptions = @consumptions.order('created_at ASC').where(user_id: current_user.id)
 	end
 
 	def new 
@@ -32,7 +33,6 @@ class ConsumptionsController < ApplicationController
 
 	def destroy
 		redirect_to consumptions_path if @consumption.destroy!
-
 	end
 
 	def show
@@ -50,10 +50,6 @@ class ConsumptionsController < ApplicationController
 		end
 
 		def consumption_params
-			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price, :user_id)
-		end
-
-		def selected_month(desired_month)
-			Consumption.where('extract(month from created_at) = ?', desired_month)
+			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price, :user_id,)
 		end
 end
