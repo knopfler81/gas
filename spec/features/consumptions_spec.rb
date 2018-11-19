@@ -59,7 +59,7 @@ RSpec.describe Consumption do
 		consumptions(:third)
 
 		visit consumptions_path
-		expect(page).to have_content("Moyenne du prix au km : 0.095 €")
+		expect(page).to have_content("Moyenne du prix au km : 0.0952 €")
 	end
 
 end

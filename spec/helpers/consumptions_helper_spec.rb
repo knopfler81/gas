@@ -22,13 +22,13 @@ describe ConsumptionsHelper do
 
   describe "#averrage_per_km" do 
   	it "returns the price avverage per km" do 
-  		expect(helper.averrage_per_km).to eql(0.095)
+  		expect(helper.averrage_per_km).to eql(0.09517241379310344)
   	end
   end
 
   describe "#averrage_for_100km" do 
   	it "returns the price avverage for 100 km" do 
-  		expect(helper.averrage_for_100km).to eql(9.5)
+  		expect(helper.averrage_for_100km).to eql(9.517241379310343)
   	end
   end
 

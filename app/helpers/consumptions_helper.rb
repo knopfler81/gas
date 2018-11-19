@@ -6,15 +6,16 @@ module ConsumptionsHelper
 
 	def total_fillin_prices
 		last = @consumptions.last.total_price
-		( @consumptions.map { |c| c.total_price }.sum - last).round(3)
+		res = (@consumptions.map { |c| c.total_price }.sum - last)
+		
 	end
 
 	def averrage_per_km
-		(total_fillin_prices / total_km).round(3)
+		(total_fillin_prices / total_km)
 	end
 
 	def averrage_for_100km
-		(averrage_per_km * 100).round(3)
+		(averrage_per_km * 100)
 	end
 
 
