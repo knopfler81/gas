@@ -1,10 +1,21 @@
 first:
-  kilometers: 789
+  kilometers: 1000
   liter_price: 1.59
   total_price: 67
   shop: Super U
+  created_at: <%= 3.days.ago %>
+  user: nelly
 second:
-  kilometers: 502
-  liter_price: 1.66
+  kilometers: 1800
+  liter_price: 1.56
   total_price: 71
   shop: Total
+  created_at: <%= 2.days.ago %>
+  user: nelly
+third:
+  kilometers: 2450
+  liter_price: 1.49
+  total_price: 71
+  shop: Esso
+  created_at: <%= 1.day.ago %>
+  user: nelly

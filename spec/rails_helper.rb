@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -19,9 +18,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
-
-def login
-  fill_in "Email", with: "Nelly"
+def login_as(user)
+  @user = User.create(email: 'nellly@example.com', encrypted_password: 'password')
+  visit root_path
+  fill_in "Email", with: "nelly@example.com"
   fill_in "Password", with: "password"
-  
+  click_on 'Log in'
 end

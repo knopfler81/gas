@@ -21,13 +21,13 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 5.0.9'
 
 group :development, :test do
-	gem 'rspec-rails', '~> 3.7'
-	gem 'launchy'
-	gem "chromedriver-helper"
+  gem 'rspec-rails', '~> 3.7'
+  gem 'launchy'
+  gem "chromedriver-helper"
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-	gem 'shoulda-matchers', '~> 3.1'
-	gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara'
   gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
   gem 'rails-controller-testing'
   gem 'pry-byebug'
@@ -35,7 +35,7 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails'  
 end
 
 
