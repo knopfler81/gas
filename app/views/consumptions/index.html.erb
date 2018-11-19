@@ -42,10 +42,10 @@
 					  		<tr class="<%= 'red' if c == @consumptions.last   %>">
 	  			  			<td class="desktop"><%= c.shop %></td>
 					  			<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
-					  			<td class="desktop"><%= c.kilometers %></td>					  	
-									<td><%= difference(c, index) %></td>
+					  			<td class="desktop"><%= number_with_precision(c.kilometers, precision: 2) %></td>					  	
+									<td><%= number_with_precision(difference(c, index), precision: 2) %></td>
 					  			<td class="desktop"><%= c.liter_price %></td>
-					  			<td><%= c.total_price %></td>
+					  			<td><%= number_with_precision(c.total_price, precision: 2) %></td>
   				  			<td class= "actions">
   				  				<%= link_to edit_consumption_path(c) do %>
   				  					<i class="fas fa-edit"></i>
@@ -70,13 +70,13 @@
 					<div class="col-12 col-md-6">
 						<p class="red">Utilisation en cours</p>
 						<p>Remplissages utilisés : <%= fill_in_count %></p>
-						<p>Montant total des consomations utilisées : <%= total_fillin_prices %> €</p>
+						<p>Montant total des consomations utilisées : <%= number_with_precision(total_fillin_prices, precision: 2) %> €</p>
 					</div>
 
 					<div class="col-12 col-md-6">
-						<p>Nombre de kilomètres parcourus : <%= total_km.abs %></p>
-						<p>Moyenne du prix au km : <%= averrage_per_km.abs %> €</p>
-						<p>Moyenne du prix au 100 km : <%= averrage_for_100km.abs  %> €</p>
+						<p>Nombre de kilomètres parcourus : <%= number_with_precision(total_km.abs, precision: 2) %></p>
+						<p>Moyenne du prix au km : <%= number_with_precision(averrage_per_km.abs, precision: 4) %> €</p>
+						<p>Moyenne du prix au 100 km : <%= number_with_precision(averrage_for_100km.abs, precision: 2) %> €</p>
 					</div>
 				</div>
 			</div>
