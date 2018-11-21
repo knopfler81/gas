@@ -1,24 +1,24 @@
 class ConsumptionsController < ApplicationController
-	before_action :find_consumption, only: [:edit, :destroy, :update]
+	before_action :find_consumption, only: [:edit, :update, :destroy]
+	before_action :find_car
 	before_action :authenticate_user!
 
-	def index
-		@search = ConsumptionSearch.new(params[:search])
-		@consumptions = @search.date_range
-		@consumptions = @consumptions.order('created_at ASC').where(user_id: current_user.id)
-	end
-
-	def new 
+	def new
+		@user = current_user
+		@car = Car.find(params[:car_id])
 		@consumption = Consumption.new
 	end
 
-	def create
+	def create 
+		@user = current_user
+		@car = Car.find(params[:car_id])
 		@consumption = Consumption.new(consumption_params)
-		@consumption.user = current_user
-    if @consumption.save
-     	redirect_to consumptions_path, notice: 'consumption was successfully created.'
+		@consumption.user = @user
+		@consumption.car = @car
+  	if @consumption.save!
+     	redirect_to @car, notice: 'Consumption was successfully created.'
     else
-      render :new
+ 			render :new
     end
 	end
 
@@ -26,17 +26,13 @@ class ConsumptionsController < ApplicationController
 	end
 
 	def update
-		if @consumption.update(consumption_params)
-		 redirect_to consumptions_path, notice: 'consumption was successfully created.'
+		if @consumption.update!(consumption_params)
+		 redirect_to @car, notice: 'Consumption was successfully created.'
 		end		
 	end
 
 	def destroy
-		redirect_to consumptions_path if @consumption.destroy!
-	end
-
-	def show
-		@consumption = Consumption.find(prarams[:id])
+		redirect_to @car if @consumption.destroy!
 	end
 
 	private
@@ -45,11 +41,11 @@ class ConsumptionsController < ApplicationController
 			@consumption = Consumption.find(params[:id])
 		end
 
-		def find_user
-			@user = User.find(params[:user_id])
+		def find_car 
+			@car = Car.find(params[:car_id])
 		end
 
 		def consumption_params
-			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price, :user_id,)
+			params.require(:consumption).permit(:total_price, :total_liters, :kilometers, :shop, :liter_price, :user_id, :car_id)
 		end
 end

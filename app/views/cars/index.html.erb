@@ -1,0 +1,29 @@
+<div class="container">
+	<h1>Mes véhicules</h1>
+	<div class="row">
+		<div class="col-12">
+			<%= link_to  "Ajouter un véhicule", new_car_path, class: "btn btn-success"  %>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+
+			<% @cars.each do |c| %>
+				<%= link_to car_path(c) do  %>
+	
+						<div class="my_car">
+							<%= c.car_name %>
+							<br>
+
+							<% if c.image.present? %>
+								<%= image_tag c.image.url, class: "car_pic" %>
+							<% else %>
+								<img src="https://images.caradisiac.com/images/1/9/5/5/111955/S0-la-fiat-124-spider-est-la-voiture-gay-de-l-annee-2017-393630.jpg" alt="une voitire">
+							<% end %>
+						</div>
+	
+				<% end %>
+			<% end %>
+
+  </div>
+</div>
