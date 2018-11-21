@@ -1,5 +1,15 @@
-	<%= simple_form_for(@car) do |f| %>
-		<%= f.input :car_name %>
-		<%= f.file_field :image %>
-		<%= f.submit %>
-	<% end %>
+<%= simple_form_for(@car) do |f| %>
+	<div class="row">
+			<div class="col-12">
+				<%= f.input :car_name, label: false, placeholder: "Nom de la voiture" %>
+				<div class="image-upload-wrap">
+						<%= f.file_field :image, class: "file-upload-input", id: "files" %>
+						<h3>Ajoutez une photo de votre voiture</h3>
+						<div id="result"></div>	
+				</div>
+				<br>
+				<%= f.submit "Valider", class: "btn btn-success" %>
+			</div>
+	</div>	
+<% end %>
+	

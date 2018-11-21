@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.small_image {
+	width: 250px;
+}
 
 .my_car {
 	padding: 20px;
@@ -27,4 +29,40 @@
 	li {
 		margin: 10px;
 	}
+}
+
+
+.image-upload-wrap {
+	text-align: center;
+	position: relative;
+	width: 100%;
+	min-height: 300px;
+	border: 4px dashed #E2E2E2;
+	background-color: #fff;
+
+	h3, em {
+		margin-top: 100px;
+	}
+}
+
+
+.file-upload-input {
+	position: absolute;
+	margin-top: 0;
+	margin-left: -50%;
+	width: 100%;
+	min-height:300px;
+	outline: none;
+	opacity: 0;
+	cursor: pointer;
+}
+
+
+.image-upload-wrap:hover {
+	background-color: #E2E2E2;
+  border: 4px dashed #fff;
+  -webkit-transition  : all 400ms ease;
+  -moz-transition     : all 400ms ease;
+  -ms-transition      : all 400ms ease;
+  transition          : all 400ms ease;
 }

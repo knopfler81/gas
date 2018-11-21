@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 RSpec.describe Car do
 	fixtures :users, :cars
 
@@ -12,8 +11,8 @@ RSpec.describe Car do
 		visit root_path
 		click_on "Ajouter un véhicule"
 		expect(page).to have_content("Ajout d'un véhicule")
-		fill_in "Car name", with: "Peugeot 307"
-		click_on "Create Car"
+		fill_in "car[car_name]", with: "Peugeot 307"
+		click_on "Valider"
 		expect(page).to have_content("Mes consommations d'essence pour Peugeot 307")
 		expect(page).to have_content("Le Véhicule a bien été créé.")
 	end
@@ -23,8 +22,8 @@ RSpec.describe Car do
 		visit car_path(car)
 		click_on "Modifier ce véhicule"
 		expect(page).to have_content "Edition d'un véhicule"
-		fill_in "Car name", with: "Peugeot 308"
-		click_on "Update Car"
+		fill_in "car[car_name]", with: "Peugeot 308"
+		click_on "Valider"
 		expect(page).to have_content("Peugeot 308")
 		expect(page).to have_content("Le Véhicule a bien été mis à jour.")
 	end	
