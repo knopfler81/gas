@@ -3,3 +3,14 @@
 @import "font-awesome";
 
 @import "consumptions";
+@import "cars";
+
+
+li {
+	text-decoration: none;
+	list-style-type: none;
+}
+
+a:hover {
+	text-decoration: none;
+}

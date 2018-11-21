@@ -5,6 +5,7 @@ first:
   shop: Super U
   created_at: <%= 3.days.ago %>
   user: nelly
+  car: peugeot
 second:
   kilometers: 1800
   liter_price: 1.56
@@ -12,6 +13,7 @@ second:
   shop: Total
   created_at: <%= 2.days.ago %>
   user: nelly
+  car: peugeot
 third:
   kilometers: 2450
   liter_price: 1.49
@@ -19,3 +21,4 @@ third:
   shop: Esso
   created_at: <%= 1.day.ago %>
   user: nelly
+  car: peugeot

@@ -1,0 +1,30 @@
+// Place all the styles related to the cars controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.my_car {
+	padding: 20px;
+	margin: 5px;
+	min-width: 200px;
+	min-height: 200px;
+	border: solid 1px red;
+	border-radius: 10%;
+	img, .car_pic {
+		max-width: 180px;
+		max-height: 180px;
+		margin-top: 10px;
+	}
+}
+
+.my_car:hover {
+	background-color: red;
+}
+
+
+.car_actions {
+	li {
+		margin: 10px;
+	}
+}

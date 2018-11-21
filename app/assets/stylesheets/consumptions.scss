@@ -7,21 +7,17 @@
   color: red;
 }
 
-.consos {
- margin-top: 30px;
+.consos , .car_actions {
+ margin-top: 15px;
  margin-bottom: 30px;
  padding: 20px;
- border: solid 1px gray;
+ border: dashed 1px #A5A5A5FF;
 }
 
 
-		
-table tbody tr:hover td,tr:hover th {
+.conso tbody tr:hover td,tr:hover th {
   background-color: yellow;
 }
-
-
-
 
 
 @media screen and (max-width: 670px){
