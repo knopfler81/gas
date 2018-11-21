@@ -19,7 +19,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.0.9'
-gem 'carrierwave', '~> 1.0'
+gem 'fog'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem "mini_magick"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
