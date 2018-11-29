@@ -22,6 +22,7 @@ gem 'font-awesome-sass', '~> 5.0.9'
 gem 'fog'
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem "mini_magick"
+gem 'money-rails', '~>1.12'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
