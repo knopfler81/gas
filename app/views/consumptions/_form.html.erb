@@ -1,10 +1,10 @@
 <%= simple_form_for([@car, @consumption]) do |f| %>
 		<div class="row">
 			<div class="col-4">
-				<%= f.input :kilometers, placeholder: "Nombre de kilomètres au compteur" %>
+				<%= f.input :kilometers, placeholder: "Nombre de kilomètres au compteur", id:"kilometers" %>
 			</div>
 			<div class="col-4">
-				<%= f.input :liter_price, placeholder: "Prix au litre" %>	
+				<%= f.input :liter_price, placeholder: "Prix au litre", id:"liter-price" %>	
 			</div>
 			<div class="col-4">
 				<%= f.input :total_price, placeholder: "Prix du plein" %>
@@ -12,10 +12,13 @@
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<%= f.input :shop , placeholder: "Enseigne pompe à essence" %>
-	
-			
+				<%= f.input :shop , placeholder: "Enseigne pompe à essence", id:"shop" %>		
 			</div>
 		</div>
 		<%= f.submit "Enregistrer", class: 'btn btn-primary' %>
 <% end %>  
+
+
+<script>
+	
+</script>

@@ -5,8 +5,8 @@ module ConsumptionsHelper
 	end
 
 	def total_fillin_prices
-		last = @consumptions.last.total_price
-		res = (@consumptions.map { |c| c.total_price }.sum - last)
+		last = @consumptions.last.total_price.to_f
+		res = (@consumptions.map { |c| c.total_price.to_f }.sum - last)
 		
 	end
 
