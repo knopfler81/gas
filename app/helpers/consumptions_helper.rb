@@ -5,9 +5,14 @@ module ConsumptionsHelper
 	end
 
 	def total_fillin_prices
-		last = @consumptions.last.total_price.to_f
-		res = (@consumptions.map { |c| c.total_price.to_f }.sum - last)
-		
+		if @consumptions.count == 0
+			0
+		elsif @consumptions.count <= 1
+			@consumptions.last.total_price
+		else
+			last = @consumptions.last.total_price
+			res = (@consumptions.map { |c| c.total_price }.sum - last)
+		end
 	end
 
 	def averrage_per_km
