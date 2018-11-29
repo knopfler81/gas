@@ -53,7 +53,7 @@
 		  				  				<% end %>
 		  				  			</td>
 		  				  			<td class= "actions">
-		  				  				<%= link_to  car_consumption_path(c), method: :delete, data: {confirm: 'are you sure?'}  do %>		  				
+		  				  				<%= link_to  car_consumption_path(@car, c), method: :delete, data: {confirm: 'are you sure?'}  do %>		  				
 		  										<i class="fas fa-trash-alt"></i>
 		  									<% end %>
 		  				  			</td>
