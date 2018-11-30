@@ -24,13 +24,35 @@
 	background-color: red;
 }
 
-
 .car_actions {
-	li {
-		margin: 10px;
-	}
+	text-align: right;
+	background-color: rgba(250, 250, 250, 0.3);
+	bottom: 0;
+	width: 100%;
+	margin-top: 160px;
+
 }
 
+.btn-action {
+	margin: 5px;
+}
+
+.car_banner {
+	width: 100%;
+	height: 60vh;
+	position: fixed-top;
+	background-position : center center;
+	background-repeat: no-repeat;
+	object-fit: cover;	
+ 	background-color: #000;
+ 	margin-bottom: 50px;
+}
+
+.car_title { 
+	text-align: center; 
+	padding-top: 150px; 
+	color: #E2E2E2;
+}
 
 .image-upload-wrap {
 	text-align: center;

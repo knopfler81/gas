@@ -7,3 +7,4 @@ class Consumption < ApplicationRecord
 	validates :shop, presence: true
 	validates :liter_price, presence: true
 end
+

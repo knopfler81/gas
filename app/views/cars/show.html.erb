@@ -1,8 +1,23 @@
+<div class="car_banner">
+	<h1 class="car_title"><%= @car.car_name %></h1>
+	<style>
+		.car_banner { background-image: url("<%= @car.image.present? ? @car.image_url : 'https://s3-eu-west-1.amazonaws.com/mygasoline/default_car.jpg' %>"); }
+	</style>
+	<div class="car_actions">
+		<%= link_to cars_path, class: "btn btn-primary btn-action btn-xs",  title: 'Mes véhicules', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+			<i class="fas fa-list"></i>
+		<% end %>
+		<%= link_to edit_car_path(@car), class: "btn btn-success btn-action btn-xs",  title: 'Modifier ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+			<i class="fas fa-edit"></i>
+			<% end %>
+		<%= link_to  car_path(@car) ,method: :delete, data: {confirm: 'Opération irréversible, êtes vous sure?'}, class: "btn btn-danger btn-action btn-xs",  title: 'Supprimer définivement ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+			<i class="fas fa-trash-alt"></i>
+		<% end %>
+	</div>
+</div>
+
 <div class="container">	
-	<h1 class="main-title">Mes consommations d'essence pour <%= @car.car_name %></h1>
-
-
-	
+	<h1 class="main-title">Mes consommations d'essence</h1>
 	<div class="consos">
 			<%= form_tag car_path, method: :get do  %>
 				<div class="row">
@@ -22,82 +37,65 @@
 			<% end %>
 			<br>
 
-				<div class="row">
-					<div class="col-12">
-						<table class="conso table table-striped">
-						  <thead>
-						    <tr>
-						   		<th scope="col" class="desktop">Magasin</th>
-						      <th scope="col">Date</th>
-						      <th scope="col"class="desktop" >Km depart</th>
-						      <th scope="col">Km parcourus</th>
-						      <th scope="col" class="desktop">€/l</th>
-									<th scope="col">€ Total</<th>
-									<th></th>
-									<th></th>
-						    </tr>
-						  </thead>
-						  	<tbody>
+			<div class="row">
+				<div class="col-12">
+					<table class="conso table table-striped">
+					  <thead>
+					    <tr>
+					   		<th scope="col" class="desktop">Magasin</th>
+					      <th scope="col">Date</th>
+					      <th scope="col"class="desktop" >Km depart</th>
+					      <th scope="col">Km parcourus</th>
+					      <th scope="col" class="desktop">€/l</th>
+								<th scope="col">€ Total</<th>
+								<th></th>
+								<th></th>
+					    </tr>
+					  </thead>
+					  	<tbody>
 
-						  		<% @consumptions.order('created_at ASC').each_with_index do |c , index| %>
-							  		<tr class="<%= 'red' if c == @consumptions.last   %>">
-			  			  			<td class="desktop"><%= c.shop %></td>
-							  			<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
-							  			<td class="desktop"><%= number_with_precision(c.kilometers, precision: 2) %></td>					  	
-											<td><%= number_with_precision(difference(c, index), precision: 2) %></td>
-							  			<td class="desktop"><%= c.liter_price %></td>
-							  			<td><%= number_with_precision(c.total_price, precision: 2) %></td>
-		  				  			<td class= "actions">
-		  				  				<%= link_to edit_car_consumption_path(@car, c) do %>
-		  				  					<i class="fas fa-edit"></i>
-		  				  				<% end %>
-		  				  			</td>
-		  				  			<td class= "actions">
-		  				  				<%= link_to  car_consumption_path(@car, c), method: :delete, data: {confirm: 'are you sure?'}  do %>		  				
-		  										<i class="fas fa-trash-alt"></i>
-		  									<% end %>
-		  				  			</td>
-							  		</tr>
-						  		<% end %>
-						  	</tbody>
-						</table>
-					</div>	
+					  		<% @consumptions.order('created_at ASC').each_with_index do |c , index| %>
+						  		<tr class="<%= 'red' if c == @consumptions.last   %>">
+		  			  			<td class="desktop"><%= c.shop %></td>
+						  			<td><%= c.created_at.strftime("%d/%m/%Y") %></td>
+						  			<td class="desktop"><%= c.kilometers %></td>					  	
+										<td><%= difference(c, index) %></td>
+						  			<td class="desktop"><%= c.liter_price %></td>
+						  			<td><%= number_with_precision(c.total_price, precision: 2) %></td>
+	  				  			<td class= "actions">
+	  				  				<%= link_to edit_car_consumption_path(@car, c) do %>
+	  				  					<i class="fas fa-edit"></i>
+	  				  				<% end %>
+	  				  			</td>
+	  				  			<td class= "actions">
+	  				  				<%= link_to  car_consumption_path(@car, c), method: :delete, data: {confirm: 'are you sure?'}  do %>		  				
+	  										<i class="fas fa-trash-alt"></i>
+	  									<% end %>
+	  				  			</td>
+						  		</tr>
+					  		<% end %>
+					  	</tbody>
+					</table>
+				</div>	
+			</div>
+		<hr>
+	</div>
+	<% if @consumptions.count > 1 %>
+		<h1 class="main-title">Récapitulatif</h1>
+		<div class="consos">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<p class="red">Utilisation en cours</p>
+					<p>Remplissages utilisés : <%= fill_in_count %></p>
+					<p>Montant total des consomations utilisées : <%= number_with_precision(total_fillin_prices, precision: 2) %> €</p>
 				</div>
 
-	</div>
-		<% if @consumptions.any? %>
-	
-			<h1 class="main-title">Récapitulatif</h1>
-			<div class="consos">
-				<div class="row">
-					<div class="col-12 col-md-6">
-						<p class="red">Utilisation en cours</p>
-						<p>Remplissages utilisés : <%= fill_in_count %></p>
-						<p>Montant total des consomations utilisées : <%= number_with_precision(total_fillin_prices, precision: 2) %> €</p>
-					</div>
-
-					<div class="col-12 col-md-6">
-						<p>Nombre de kilomètres parcourus : <%= number_with_precision(total_km.abs, precision: 2) %></p>
-						<p>Moyenne du prix au km : <%= number_with_precision(averrage_per_km.abs, precision: 4) %> €</p>
-						<p>Moyenne du prix au 100 km : <%= number_with_precision(averrage_for_100km.abs, precision: 2) %> €</p>
-					</div>
+				<div class="col-12 col-md-5">
+					<p>Nombre de kilomètres parcourus : <%= total_km.abs %></p>
+					<p>Moyenne du prix au km : <%= number_with_precision(averrage_per_km.abs, precision: 4) %> €</p>
+					<p>Moyenne du prix au 100 km : <%= number_with_precision(averrage_for_100km.abs, precision: 2) %> €</p>
 				</div>
 			</div>
-		<% end %>
-
-	<h1 class="main-title">Action pour <%= @car.car_name %></h1>
-	<div class="car_actions">
-		<ul>
-			<li>
-				<%= link_to "Liste véhicules", cars_path, class: "btn btn-success btn-xs"  %>
-			</li>
-			<li>
-				<%= link_to "Modifier ce véhicule", edit_car_path(@car), class: "btn btn-warning btn-xl"  %>
-			</li>
-			<li>
-				<%= link_to "Supprimer définitivement ce véhicule *", car_path(@car) ,method: :delete, data: {confirm: 'Opération irréversible, êtes vous sure?'}, class: "btn btn-danger btn-xl" %>
-			</li>
-		</ul>
-	</div>
-	
+		</div>
+	<% end %>	
 </div>

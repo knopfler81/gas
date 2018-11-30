@@ -16,11 +16,11 @@ module ConsumptionsHelper
 	end
 
 	def averrage_per_km
-		(total_fillin_prices / total_km)
+		@consumptions.count <= 1 ? 0 : total_fillin_prices / total_km
 	end
 
 	def averrage_for_100km
-		(averrage_per_km * 100)
+		@consumptions.count <= 1 ? 0 : averrage_per_km * 100
 	end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_134009) do
+ActiveRecord::Schema.define(version: 2018_11_30_135042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,9 @@ ActiveRecord::Schema.define(version: 2018_11_21_134009) do
 
   create_table "consumptions", force: :cascade do |t|
     t.float "total_price"
-    t.float "kilometers"
+    t.integer "kilometers"
     t.string "shop"
     t.float "liter_price"
-    t.float "total_liters"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
