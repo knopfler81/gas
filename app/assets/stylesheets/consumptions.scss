@@ -10,15 +10,14 @@
 .consos , .car_actions {
  margin-top: 15px;
  margin-bottom: 30px;
- padding: 20px;
- border: dashed 1px #A5A5A5FF;
+ //padding: 20px;
+ // border: dashed 1px #A5A5A5FF;
+ // border-radius: 5px;
 }
-
 
 .conso tbody tr:hover td,tr:hover th {
-  background-color: yellow;
+  background-color: #fff;
 }
-
 
 @media screen and (max-width: 670px){
 	.desktop {

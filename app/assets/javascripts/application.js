@@ -54,3 +54,8 @@ var element = document.getElementById('files')
 if(element != null){
   document.getElementById('files').addEventListener('change', handleFileSelect, false);  
 }
+
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});

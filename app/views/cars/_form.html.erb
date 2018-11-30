@@ -1,10 +1,10 @@
 <%= simple_form_for(@car) do |f| %>
 	<div class="row">
 			<div class="col-12">
-				<%= f.input :car_name, label: false, placeholder: "Nom de la voiture" %>
+				<%= f.input :car_name, label: false, placeholder: "ex: 308 Peugeot" %>
 				<div class="image-upload-wrap">
 						<%= f.file_field :image, class: "file-upload-input", id: "files" %>
-						<h3>Ajoutez une photo de votre voiture</h3>
+						<h3>Ajoutez une photo de votre véhicule</h3>
 						<div id="result"></div>	
 				</div>
 				<br>
@@ -12,4 +12,3 @@
 			</div>
 	</div>	
 <% end %>
-	
