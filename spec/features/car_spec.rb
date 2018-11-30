@@ -13,14 +13,14 @@ RSpec.describe Car do
 		expect(page).to have_content("Ajout d'un véhicule")
 		fill_in "car[car_name]", with: "Peugeot 307"
 		click_on "Valider"
-		expect(page).to have_content("Mes consommations d'essence pour Peugeot 307")
+		expect(page).to have_content("Mes consommations d'essence")
 		expect(page).to have_content("Le Véhicule a bien été créé.")
 	end
 
 	scenario "Edit a car" do
 		car = cars(:telsa)
 		visit car_path(car)
-		click_on "Modifier ce véhicule"
+		find(".edit_car").click
 		expect(page).to have_content "Edition d'un véhicule"
 		fill_in "car[car_name]", with: "Peugeot 308"
 		click_on "Valider"
@@ -32,7 +32,7 @@ RSpec.describe Car do
 	scenario "destroy a car" do
 		car = cars(:telsa)
 		visit car_path(car)
-		click_on "Supprimer définitivement ce véhicule *"
+		find(".delete_car").click
 		expect(page).to have_content("Le Véhicule a bien été supprimé.")
 	end	
 end

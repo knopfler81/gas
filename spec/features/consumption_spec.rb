@@ -45,7 +45,7 @@ RSpec.describe Consumption do
 		consumptions(:third)
 
 		visit car_path(car)
-		expect(page).to have_content("Nombre de kilomètres parcourus : 1450.0")
+		expect(page).to have_content("Nombre de kilomètres parcourus : 1450")
 	end
 
 	scenario "display the number of kilometers between two fillin", :skip do 

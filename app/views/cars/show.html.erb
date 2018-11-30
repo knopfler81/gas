@@ -7,10 +7,10 @@
 		<%= link_to cars_path, class: "btn btn-primary btn-action btn-xs",  title: 'Mes véhicules', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
 			<i class="fas fa-list"></i>
 		<% end %>
-		<%= link_to edit_car_path(@car), class: "btn btn-success btn-action btn-xs",  title: 'Modifier ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+		<%= link_to edit_car_path(@car), class: "btn btn-success btn-action btn-xs edit_car",  title: 'Modifier ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
 			<i class="fas fa-edit"></i>
 			<% end %>
-		<%= link_to  car_path(@car) ,method: :delete, data: {confirm: 'Opération irréversible, êtes vous sure?'}, class: "btn btn-danger btn-action btn-xs",  title: 'Supprimer définivement ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
+		<%= link_to  car_path(@car) ,method: :delete, data: {confirm: 'Opération irréversible, êtes vous sure?'}, class: "btn btn-danger btn-action btn-xs delete_car",  title: 'Supprimer définivement ce véhicule', 'data-toggle' => 'tooltip', 'data-placement' => 'top' do %>
 			<i class="fas fa-trash-alt"></i>
 		<% end %>
 	</div>

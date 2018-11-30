@@ -35,14 +35,14 @@ describe ConsumptionsHelper do
   describe "#difference" do 
   	it "returns the difference of km done with last fill in" do 
   		c = @consumptions.last
-  		expect(helper.difference(c, 2)).to eql(650.0)
+  		expect(helper.difference(c, 2)).to eql(650)
   	end
   end
 
 
   describe "#total_km" do 
   	it "returns the total of km done" do 
-  		expect(helper.total_km).to eql(1450.0)
+  		expect(helper.total_km).to eql(1450)
   	end
   end
 
